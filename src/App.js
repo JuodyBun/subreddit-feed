@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
+import Article from './components/Article';
+
 function App() {
   const [articles, setArticles] = useState([]); //use state as an empty array
   const [subreddit, setSubreddit] = useState('webdev');
@@ -26,7 +28,9 @@ function App() {
         <input type="text" className="input" value="webdev"/>
       </header>
       <div className="articles">
-
+        {
+          (articles != null) ? articles.map((article, index) => <Article key={index} article={article.data} />) : ''
+        }
       </div>
     </div>
   );
