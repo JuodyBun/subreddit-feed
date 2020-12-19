@@ -13,7 +13,7 @@ function App() {
 
       res.json().then(data => {
         if (data != null) {
-          console.log(data);
+          setArticles(data.data.children);
         }
       });
     })
