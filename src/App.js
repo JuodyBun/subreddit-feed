@@ -2,6 +2,23 @@ import React, {useState, useEffect} from 'react';
 
 function App() {
   const [articles, setArticles] = useState([]); //use state as an empty array
+  const [subreddit, setSubreddit] = useState('webdev');
+
+  useEffect(() => {
+    fetch("https://www.reddit.com/r/webdev.json").then(res => {
+      if (res.status != 200) {
+        console.log("EROROORORROR");
+        return;
+      }
+
+      res.json().then(data => {
+        if (data != null) {
+          console.log(data);
+        }
+      });
+    })
+
+  }, [subreddit]); //everytime a subreddit changes, useEffect will recall
 
   return (
     <div className="App">
